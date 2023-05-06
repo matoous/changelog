@@ -1,0 +1,114 @@
+name: "CI"
+
+on:
+  pull_request: null
+  push:
+    branches:
+    - "main"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  checks: write
+
+env:
+  AWS_REGION: "eu-west-1"
+  GITHUB_ACCESS_TOKEN: "${{ secrets.GH_ACTIONS_PAT }}"
+
+jobs:
+  check:
+    name: Check
+    runs-on: identity
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1      
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable      
+      - uses: Swatinem/rust-cache@v2
+      - name: Run cargo check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check  
+
+  test:
+    name: Test Suite
+    runs-on: identity
+    env:
+      RUST_BACKTRACE: 1
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1      
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable      
+      - uses: Swatinem/rust-cache@v2
+      - name: Run cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+  lints:
+    name: Lints
+    runs-on: identity
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1      
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable      
+      - uses: Swatinem/rust-cache@v2
+      - name: Run cargo fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - uses: actions-rs/clippy-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --all-targets --all-features
+      - name: Run cargo doc
+        uses: actions-rs/cargo@v1
+        with:
+          command: doc
+          args: --no-deps --document-private-items
+        env:
+          RUSTDOCFLAGS: -D warnings  
+
+  image:
+    env:
+      IMAGE: 861104244336.dkr.ecr.eu-west-1.amazonaws.com/identity/feature-togglers
+    name: "Build Docker Image"
+    runs-on: identity
+    timeout-minutes: 10
+    needs: [check, test]
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: "checkout"
+      uses: "actions/checkout@v3"
+    - name: "configure AWS credentials"
+      uses: "aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838"
+      with:
+        aws-access-key-id: "${{ secrets.GA_USER_AWS_ACCESS_KEY_ID }}"
+        aws-region: "${{ env.AWS_REGION }}"
+        aws-secret-access-key: "${{ secrets.GA_USER_AWS_SECRET_ACCESS_KEY }}"
+    - id: "login-ecr"
+      name: "Login to Amazon ECR"
+      uses: "aws-actions/amazon-ecr-login@261a7de32bda11ba01f4d75c4ed6caf3739e54be"
+    - name: "Login to Docker Hub"
+      uses: "docker/login-action@v2"
+      with:
+        password: "${{ secrets.DOCKERHUB_PASSWORD }}"
+        username: "${{ secrets.DOCKERHUB_USER }}"
+    - name: "build the image"
+      run: |
+        docker build -t "${{ env.IMAGE }}:${{ github.sha }}" --file Dockerfile .
+    - name: "push the image"
+      run: |
+        docker push "${{ env.IMAGE }}:${{ github.sha }}"
