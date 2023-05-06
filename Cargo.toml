@@ -1,0 +1,37 @@
+[package]
+name = "reboard"
+description = "HTTP API for Changelog"
+version = "0.0.1"
+edition = "2021"
+resolver = "2"
+authors = ["matousdzivjak@gmail.com"]
+readme = "README.md"
+repository = "https://github.com/matoous/changelog/"
+keywords = ["changelog", "api"]
+
+[dependencies]
+actix-web = { version = "4.2.1", default-features = false, features = ["macros", "compress-gzip", "compress-zstd"] }
+actix-web-prometheus = "0.1.0-beta.8"
+chrono = "0.4.24"
+config = "0.13.3"
+deadpool-postgres = { version = "0.10.2", features = ["serde"] }
+derive_more = "0.99.17"
+dotenv = "0.15.0"
+lazy_static = "1.4.0"
+opentelemetry = { version = "0.18.0", features = ["trace", "rt-tokio"] }
+opentelemetry-otlp = { version = "0.11.0", features = ["grpc-tonic", "trace", "tls", "tls-roots" ] }
+opentelemetry-semantic-conventions = "0.10.0"
+prometheus = "0.13.3"
+rusty_ulid = "2.0.0"
+serde = { version = "1.0.150", features = ["derive"] } 
+tokio-pg-mapper = "0.2.0"
+tokio-pg-mapper-derive = "0.2.0"
+tokio-postgres = { version = "0.7.6", features = ["with-chrono-0_4"] }
+tonic = {version = "0.8.3", features = ["tls"]}
+tracing = "0.1.37"
+tracing-actix-web = "0.6.2"
+tracing-opentelemetry = "0.18.0"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter", "json"] }
+
+[dev-dependencies]
+testcontainers = "0.14.0"
