@@ -20,7 +20,7 @@ dotenv = "0.15.0"
 lazy_static = "1.4.0"
 opentelemetry = { version = "0.18.0", features = ["trace", "rt-tokio"] }
 opentelemetry-otlp = { version = "0.11.0", features = ["grpc-tonic", "trace", "tls", "tls-roots" ] }
-opentelemetry-semantic-conventions = "0.10.0"
+opentelemetry-semantic-conventions = "0.11.0"
 prometheus = "0.13.3"
 rusty_ulid = "2.0.0"
 serde = { version = "1.0.150", features = ["derive"] } 
