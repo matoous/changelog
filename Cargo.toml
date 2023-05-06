@@ -10,7 +10,7 @@ repository = "https://github.com/matoous/changelog/"
 keywords = ["changelog", "api"]
 
 [dependencies]
-actix-web = { version = "4.2.1", default-features = false, features = ["macros", "compress-gzip", "compress-zstd"] }
+actix-web = { version = "4.3.1", default-features = false, features = ["macros", "compress-gzip", "compress-zstd"] }
 actix-web-prometheus = "0.1.0-beta.8"
 chrono = "0.4.24"
 config = "0.13.3"
