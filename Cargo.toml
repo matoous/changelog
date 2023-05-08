@@ -26,7 +26,7 @@ rusty_ulid = "2.0.0"
 serde = { version = "1.0.150", features = ["derive"] } 
 tokio-pg-mapper = "0.2.0"
 tokio-pg-mapper-derive = "0.2.0"
-tokio-postgres = { version = "0.7.6", features = ["with-chrono-0_4"] }
+tokio-postgres = { version = "0.7.8", features = ["with-chrono-0_4"] }
 tonic = {version = "0.8.3", features = ["tls"]}
 tracing = "0.1.37"
 tracing-actix-web = "0.6.2"
