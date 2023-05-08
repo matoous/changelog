@@ -14,7 +14,7 @@ actix-web = { version = "4.2.1", default-features = false, features = ["macros",
 actix-web-prometheus = "0.1.0-beta.8"
 chrono = "0.4.24"
 config = "0.13.3"
-deadpool-postgres = { version = "0.10.2", features = ["serde"] }
+deadpool-postgres = { version = "0.10.5", features = ["serde"] }
 derive_more = "0.99.17"
 dotenv = "0.15.0"
 lazy_static = "1.4.0"
