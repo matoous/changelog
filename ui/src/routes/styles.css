@@ -1,0 +1,15 @@
+:root {
+	--font-sans: system-ui, sans-serif;
+	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono',
+		monospace;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 1.5;
+	width: 100%;
+	word-break: break-word;
+}
