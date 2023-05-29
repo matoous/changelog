@@ -1247,8 +1247,8 @@ dependencies = [
 
 [[package]]
 name = "ormlite"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.14.2"
+source = "git+https://github.com/kurtbuilds/ormlite.git#f0be475f0ff688e406cac039942a14bb3960bdf1"
 dependencies = [
  "ormlite-core",
  "ormlite-macro",
@@ -1256,12 +1256,13 @@ dependencies = [
  "sqlx",
  "sqlx-core",
  "tokio",
+ "tokio-stream",
 ]
 
 [[package]]
 name = "ormlite-attr"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.14.2"
+source = "git+https://github.com/kurtbuilds/ormlite.git#f0be475f0ff688e406cac039942a14bb3960bdf1"
 dependencies = [
  "anyhow",
  "convert_case 0.6.0",
@@ -1276,8 +1277,8 @@ dependencies = [
 
 [[package]]
 name = "ormlite-core"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.14.2"
+source = "git+https://github.com/kurtbuilds/ormlite.git#f0be475f0ff688e406cac039942a14bb3960bdf1"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1292,8 +1293,8 @@ dependencies = [
 
 [[package]]
 name = "ormlite-macro"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.14.2"
+source = "git+https://github.com/kurtbuilds/ormlite.git#f0be475f0ff688e406cac039942a14bb3960bdf1"
 dependencies = [
  "itertools",
  "lazy_static",
@@ -1768,9 +1769,9 @@ dependencies = [
 
 [[package]]
 name = "sqlmo"
-version = "0.11.3"
+version = "0.11.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6ea24f2e0c82fb04bd7e4badc598b39d4e48ac80e0512afd3ea249ade17b59b6"
+checksum = "777161268e7fd34bb4d294fbc93e40d30a8bb0dfebca7fc7b4f62ee9a36bf147"
 dependencies = [
  "anyhow",
  "convert_case 0.6.0",
