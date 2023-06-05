@@ -1,5 +1,5 @@
 # builder
-FROM rust:1.65 as builder
+FROM rust:1.70 as builder
 
 # protoc necessary for otel
 RUN apt update && apt install -y \
