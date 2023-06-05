@@ -12,7 +12,7 @@ keywords = ["changelog", "api"]
 [dependencies]
 actix-cors = "0.6.4"
 actix-web = { version = "4.2.1", default-features = false, features = ["macros", "compress-gzip", "compress-zstd"] }
-chrono = { version = "0.4.0", features = ["serde"]}
+chrono = { version = "0.4.26", features = ["serde"]}
 config = "0.13.3"
 derive_more = "0.99.17"
 dotenv = "0.15.0"
