@@ -93,7 +93,7 @@ jobs:
     - name: "checkout"
       uses: "actions/checkout@v3"
     - name: "configure AWS credentials"
-      uses: "aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838"
+      uses: "aws-actions/configure-aws-credentials@5fd3084fc36e372ff1fff382a39b10d03659f355"
       with:
         aws-access-key-id: "${{ secrets.GA_USER_AWS_ACCESS_KEY_ID }}"
         aws-region: "${{ env.AWS_REGION }}"
