@@ -100,7 +100,7 @@ jobs:
         aws-secret-access-key: "${{ secrets.GA_USER_AWS_SECRET_ACCESS_KEY }}"
     - id: "login-ecr"
       name: "Login to Amazon ECR"
-      uses: "aws-actions/amazon-ecr-login@261a7de32bda11ba01f4d75c4ed6caf3739e54be"
+      uses: "aws-actions/amazon-ecr-login@e407df249e6c155d03c0e4375f34bc2385f52d65"
     - name: "Login to Docker Hub"
       uses: "docker/login-action@v2"
       with:
