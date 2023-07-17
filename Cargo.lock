@@ -1247,8 +1247,8 @@ dependencies = [
 
 [[package]]
 name = "ormlite"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.16.0"
+source = "git+https://github.com/kurtbuilds/ormlite.git#0a1616873570a038b894cc07c1712dcdfb8e8891"
 dependencies = [
  "ormlite-core",
  "ormlite-macro",
@@ -1256,12 +1256,13 @@ dependencies = [
  "sqlx",
  "sqlx-core",
  "tokio",
+ "tokio-stream",
 ]
 
 [[package]]
 name = "ormlite-attr"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.16.0"
+source = "git+https://github.com/kurtbuilds/ormlite.git#0a1616873570a038b894cc07c1712dcdfb8e8891"
 dependencies = [
  "anyhow",
  "convert_case 0.6.0",
@@ -1272,12 +1273,13 @@ dependencies = [
  "sqlmo",
  "structmeta",
  "syn 1.0.109",
+ "tracing",
 ]
 
 [[package]]
 name = "ormlite-core"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.16.0"
+source = "git+https://github.com/kurtbuilds/ormlite.git#0a1616873570a038b894cc07c1712dcdfb8e8891"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1292,8 +1294,8 @@ dependencies = [
 
 [[package]]
 name = "ormlite-macro"
-version = "0.14.0"
-source = "git+https://github.com/kurtbuilds/ormlite.git#79c9cea5e8f3367e8e7ec8a60425981ace5dee94"
+version = "0.16.0"
+source = "git+https://github.com/kurtbuilds/ormlite.git#0a1616873570a038b894cc07c1712dcdfb8e8891"
 dependencies = [
  "itertools",
  "lazy_static",
@@ -1768,13 +1770,11 @@ dependencies = [
 
 [[package]]
 name = "sqlmo"
-version = "0.11.3"
+version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6ea24f2e0c82fb04bd7e4badc598b39d4e48ac80e0512afd3ea249ade17b59b6"
+checksum = "e2c8c2689eb43b89e3eb8feaad2a875ddab39efa08fb5f6841419b6335712ebb"
 dependencies = [
  "anyhow",
- "convert_case 0.6.0",
- "itertools",
 ]
 
 [[package]]
@@ -2131,7 +2131,19 @@ dependencies = [
  "cfg-if",
  "log",
  "pin-project-lite",
+ "tracing-attributes",
  "tracing-core",
+]
+
+[[package]]
+name = "tracing-attributes"
+version = "0.1.26"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5f4f31f56159e98206da9efd823404b79b6ef3143b4a7ab76e67b1751b25a4ab"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.15",
 ]
 
 [[package]]
